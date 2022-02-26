@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <style>
+        div{
+            width: 60%;
+            margin: 0 auto;
+            padding: 2% 0;;
+            background-color: grey;
+            opacity: 0.8;
+        }
+        table{
+            width: 100%;
+            margin: 10%;
+        }
+        tr{
+            width: 100%;
+            padding: 20%;
+        }
+        input, select{
+            width: 50%;
+            padding: 1%;
+            border: 2px solid red;
+            border-radius: 8px;
+        }
+        .input{
+            width: 80%;
+        }           
+        .choose{
+            width: 5%;
+        }
+        input:focus{
+            box-shadow: 0px 0px 30px 0px red;
+        }
+        h2{
+            text-align: center;
+        }
+        input[type=submit], input[type=reset]{
+            width: 30%;
+            margin: 0 8%;
+        }
+        input[type=submit]{
+            background-color: green;
+            border: 0;
+            color: white;
+        }
+        input[type=reset]{
+            background-color: red;
+            border: 0;
+            color: white;
+        }
+        li{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <h2>HTML5 validation form</h2>
+        <form action="" id="myform" oninput="result.value = salary.value+'$'">
+            <table>
+                <caption></caption>
+                
+                    <tr>
+                        <td>
+                            <label for="name">Name  </label>
+                        </td>
+                        <td class="input">
+                            <input name="name" type="text">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="email">Email  </label>
+                        </td>
+                        <td class="input">
+                            <input name="email" type="text"  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <label for="pass">Password </label>
+                        </td>
+                        <td class="input">
+                            <input name="pass" type="password" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="salary">Salary </label>
+                        </td>
+
+                        <td class="input">
+                            <input type="range" name="salary" required>
+                            <output name="result"></output>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="age">Age</label> 
+                        </td>
+                        <td>
+                            <input type="number" min="21" required>
+                        </td>
+                    </tr>                     
+                </table>
+            <input type="submit" value="Submit">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+    <div>
+        <ul id="validate"></ul>
+    </div>
+
+
+    <script>
+        var parent = document.getElementById("myform")
+        var validate = document.getElementById("validate")
+        parent.addEventListener("submit",validateForm)
+
+        function validateForm(e) { 
+            var check = 0;
+            // e.preventDefault();
+            validate.innerHTML=''
+            if (parent[2].value.length < 8) {
+                validate.innerHTML += '<li>Password  length must be at least 8 characters.</li>'
+            }
+        }
+    </script>
+    
+</body>
+</html>
